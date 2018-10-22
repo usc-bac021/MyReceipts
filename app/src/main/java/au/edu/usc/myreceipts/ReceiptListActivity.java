@@ -1,13 +1,11 @@
 package au.edu.usc.myreceipts;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v4.app.Fragment;
 
-public class ReceiptListActivity extends AppCompatActivity {
+public class ReceiptListActivity extends SingleFragmentActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_receipt_list);
+    protected Fragment createFragment() {
+        return new ReceiptListFragment();
     }
 }
