@@ -53,19 +53,21 @@ public class ReceiptListFragment extends Fragment {
     private class ReceiptHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private Receipt mReceipt;
         private TextView mTitleTextView;
+        private TextView mShopNameTextView;
         private TextView mDateTextView;
 
         public ReceiptHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_receipt, parent, false));
             itemView.setOnClickListener(this);
             mTitleTextView = (TextView) itemView.findViewById(R.id.receipt_title);
+            mShopNameTextView = (TextView) itemView.findViewById(R.id.receipt_shop_name);
             mDateTextView = (TextView) itemView.findViewById(R.id.receipt_date);
         }
 
         public void bind(Receipt receipt) {
             mReceipt = receipt;
             mTitleTextView.setText(mReceipt.getTitle());
-            mDateTextView.setText(mReceipt.getDate().toString());
+            mDateTextView.setText(mReceipt.getDateAsString());
         }
 
         @Override

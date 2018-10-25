@@ -2,5 +2,6 @@
     <string name="app_name">MyReceipt</string>
     <string name="receipt_title_hint">Enter a title for the receipt.</string>
     <string name="receipt_title_label">Title</string>
+    <string name="receipt_date_label">Date of Receipt</string>
     <string name="receipt_details_label">Details</string>
 </resources>

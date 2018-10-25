@@ -1,5 +1,7 @@
 package au.edu.usc.myreceipts;
 
+import android.text.format.DateFormat;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -31,6 +33,10 @@ public class Receipt {
 
     public Date getDate() {
         return mDate;
+    }
+
+    public String getDateAsString() {
+        return DateFormat.format("EEE, dd MMM yyyy", mDate).toString();
     }
 
     public void setDate(Date date) {
