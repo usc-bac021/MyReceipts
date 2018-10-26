@@ -21,7 +21,7 @@ public class ReceiptPile {
 
     private ReceiptPile(Context context) {
         mReceipts = new LinkedHashMap<>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 5; i++) {
             Receipt receipt = new Receipt();
             receipt.setTitle("Receipt #" + i);
             receipt.setShopName("Shop " + i);
@@ -35,5 +35,9 @@ public class ReceiptPile {
 
     public Receipt getReceipt(UUID id) {
         return mReceipts.get(id);
+    }
+
+    public void addReceipt(Receipt r) {
+        mReceipts.put(r.getId(), r);
     }
 }

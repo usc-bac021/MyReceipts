@@ -3,9 +3,13 @@ package au.edu.usc.myreceipts;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -25,6 +29,41 @@ public class ReceiptListFragment extends Fragment {
     }
 
 
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_receipt_list, menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.new_receipt:
+                Receipt receipt = new Receipt();
+                ReceiptPile.get(getActivity()).addReceipt(receipt);
+                Intent intent = ReceiptActivity.newIntent(getActivity(), receipt.getId());
+                startActivity(intent);
+                return true;
+            case R.id.help:
+                Intent helpIntent = new Intent(getActivity(), HelpPageActivity.class);
+                startActivity(helpIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_receipt_list, container, false);
@@ -33,6 +72,7 @@ public class ReceiptListFragment extends Fragment {
         updateUI();
         return view;
     }
+
 
     private void updateUI() {
         ReceiptPile receiptPile = ReceiptPile.get(getActivity());
@@ -49,6 +89,12 @@ public class ReceiptListFragment extends Fragment {
             }
         }
     }
+
+
+
+
+
+
 
     private class ReceiptHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private Receipt mReceipt;
@@ -77,6 +123,12 @@ public class ReceiptListFragment extends Fragment {
             startActivity(intent);
         }
     }
+
+
+
+
+
+
 
     private class ReceiptAdapter extends RecyclerView.Adapter<ReceiptHolder> {
 
