@@ -1,5 +1,6 @@
 package au.edu.usc.myreceipts;
 
+import android.location.Location;
 import android.text.format.DateFormat;
 
 import java.util.Date;
@@ -15,11 +16,18 @@ public class Receipt {
     private String mShopName;
     private String mComment;
 
-    private String mLocation;
-    private String mImage;
+    private Location mLocation;
+
+    private double mLongitude;
+    private double mLatitude;
+
 
     public Receipt() {
-        mId = UUID.randomUUID();
+        this(UUID.randomUUID());
+    }
+
+    public Receipt(UUID uuid) {
+        mId = uuid;
         mDate = new Date();
     }
 
@@ -33,10 +41,6 @@ public class Receipt {
 
     public Date getDate() {
         return mDate;
-    }
-
-    public String getDateAsString() {
-        return DateFormat.format("EEE, dd MMM yyyy", mDate).toString();
     }
 
     public void setDate(Date date) {
@@ -67,19 +71,27 @@ public class Receipt {
         mComment = comment;
     }
 
-    public String getLocation() {
+    public Location getLocation() {
         return mLocation;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Location location) {
         mLocation = location;
     }
 
-    public String getImage() {
-        return mImage;
+    public double getLongitude() { return mLongitude; }
+
+    public void setLongitude(double longitude) { mLongitude = longitude; }
+
+    public double getLatitude() { return mLatitude; }
+
+    public void setLatitude(double latitude) { mLatitude = latitude; }
+
+    public String getFormattedDate() {
+        return "Date: " + DateFormat.format("EEE, dd MMM yyyy", getDate()).toString();
     }
 
-    public void setImage(String image) {
-        mImage = image;
+    public String getPhotoFilename(){
+        return "IMG_" + getId().toString() + ".jpg";
     }
 }

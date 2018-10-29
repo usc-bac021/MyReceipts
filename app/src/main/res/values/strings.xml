@@ -1,9 +1,28 @@
 <resources>
     <string name="app_name">MyReceipt</string>
-    <string name="receipt_title_hint">Enter a title for the receipt.</string>
+
     <string name="receipt_title_label">Title</string>
-    <string name="receipt_date_label">Date of Receipt</string>
+    <string name="receipt_title_hint">Enter receipt title.</string>
+
+    <string name="receipt_shop_name_label">Shop Name</string>
+    <string name="receipt_shop_name_hint">Enter receipt shop name.</string>
+
+    <string name="receipt_comment_label">Comment</string>
+    <string name="receipt_comment_hint">Enter comment about the receipt.</string>
+
+    <string name="receipt_date_label">Date</string>
+
     <string name="receipt_details_label">Details</string>
+    <string name="receipt_details_hint">Enter a title for the receipt.</string>
+
+    <string name="receipt_report_label">Send Receipt Report</string>
+
     <string name="new_receipt">New</string>
+    <string name="delete_receipt">Delete</string>
     <string name="help">Help</string>
+
+    <string name="receipt_report">%1$s! The receipt was for purchase on %2$s. %3$s, and %4$s</string>
+    <string name="receipt_report_subject">MyReceipts Receipt Report</string>
+    <string name="send_report">Send receipt report via</string>
+
 </resources>
