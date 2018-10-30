@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Date;
 import java.util.List;
@@ -33,7 +34,6 @@ public class ReceiptFragment extends Fragment {
     private static final String ARG_RECEIPT_ID = "receipt_id";
     private static final String DIALOG_DATE = "DialogDate";
     private static final int REQUEST_DATE = 0;
-    private static final int REQUEST_PHOTO = 2;
 
     private Receipt mReceipt;
 
@@ -43,8 +43,9 @@ public class ReceiptFragment extends Fragment {
 
     private Button mDateButton;
     private Button mLocationButton;
-    private Button mImageButton;
     private Button mReportButton;
+
+    private ImageButton mImageButton;
 
     private TextView mLocationTextView;
 
@@ -176,41 +177,26 @@ public class ReceiptFragment extends Fragment {
         });
 
         // Receipt Location
+        mLocationTextView = (TextView)v.findViewById(R.id.receipt_location);
+        mLocationTextView.setText(getString(R.string.location_text, 0.00, 0.00));
 
+        mLocationButton = (Button) v.findViewById(R.id.receipt_show_location);
+        mLocationButton.setText(R.string.show_in_map);
+        mLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Show in map pressed", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         // Receipt Image
-
-//        PackageManager packageManager = getActivity().getPackageManager();
-//
-//        mPhotoButton = (ImageButton) v.findViewById(R.id.receipt_camera);
-//        final Intent captureImage = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        boolean canTakePhoto = mPhotoFile != null &&
-//                captureImage.resolveActivity(packageManager) != null;
-//        mPhotoButton.setEnabled(canTakePhoto);
-//
-//        mPhotoButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Uri uri = FileProvider.getUriForFile(getActivity(),
-//                        "au.edu.usc.myreceipts.fileprovider",
-//                        mPhotoFile);
-//                captureImage.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-//
-//                List<ResolveInfo> cameraActivities = getActivity()
-//                        .getPackageManager().queryIntentActivities(captureImage,
-//                                PackageManager.MATCH_DEFAULT_ONLY);
-//
-//                for (ResolveInfo activity : cameraActivities) {
-//                    getActivity().grantUriPermission(activity.activityInfo.packageName,
-//                            uri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-//                }
-//
-//                startActivityForResult(captureImage, REQUEST_PHOTO);
-//            }
-//        });
-//
-//        mPhotoView = (ImageView) v.findViewById(R.id.receipt_photo);
-//        updatePhotoView();
+        mImageButton = (ImageButton) v.findViewById(R.id.receipt_image_button);
+        mImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Add Image pressed", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         // Receipt Report

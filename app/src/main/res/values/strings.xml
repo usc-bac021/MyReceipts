@@ -15,14 +15,17 @@
     <string name="receipt_details_label">Details</string>
     <string name="receipt_details_hint">Enter a title for the receipt.</string>
 
-    <string name="receipt_report_label">Send Receipt Report</string>
+    <string name="show_in_map">Show in Map</string>
+    <string name="location_text">Lat: %1$.4f, Long: %2$.4f</string>
+
 
     <string name="new_receipt">New</string>
     <string name="delete_receipt">Delete</string>
     <string name="help">Help</string>
 
-    <string name="receipt_report">%1$s! The receipt was for purchase on %2$s. %3$s, and %4$s</string>
+    <string name="receipt_report_label">Send Receipt Report</string>
     <string name="receipt_report_subject">MyReceipts Receipt Report</string>
     <string name="send_report">Send receipt report via</string>
+    <string name="receipt_report">%1$s! The receipt was for purchase on %2$s.\nFrom %3$s.\nComments - %4$s</string>
 
 </resources>
